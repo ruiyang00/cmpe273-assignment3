@@ -2,7 +2,7 @@
 This is the LRU cache and Bloom filter implementation of distributed cache system
 
 
-##Question to the determination of **k(hashes)** and  *m* bits values to store one
+## Question to the determination of **k(hashes)** and  *m* bits values to store one
 million items 
 n -> number of items to be store
 p -> false positive probability
