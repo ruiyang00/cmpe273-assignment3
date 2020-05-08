@@ -1,16 +1,17 @@
-import hashlib
-from bitarray import bitarray
 
-arr1 = bitarray(20)
-arr1.setall(0)
-print(arr1)
-
-res = hashlib.md5(b"cmpe272") % 20
+from DoubleLinkedlist import DoubleLinkedlist
 
 
-digest = res.digest()
+list = DoubleLinkedlist()
+data1 = {'name': 'Brad Pitt', 'email': 'bpitt@gmail.com', 'age': 30}
+data2 = {'name': 'Wall Bran', 'email': 'wbran@gmail.com', 'age': 18}
+data3 = {'name': 'Robert Jennifer', 'email': 'rjennifer@gmail.com', 'age': 24}
 
-arr1.append(digest)
-# arr1.append("abc")
-# arr1.append("23123")
-print(arr1)
+
+list.addFront(data1)
+list.addFront(data2)
+list.addFront(data3)
+
+head = list.head.next.value
+print(head)
+print(list.get_size())

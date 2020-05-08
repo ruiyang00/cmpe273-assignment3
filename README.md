@@ -13,5 +13,5 @@ The probabability equations for Bloom Filter:
  p = (1- exp(-k/(m/n))^k
 Let's say that we want the false positive to be around 0.01 then we have
 m = roughly around 9,585,000  and k = 7 (i have clacualte this 7 is the best
-for 0.01 false positive with m = roughly around 9,585,000 around 1.2MB. 
+for 0.01 false positive with m = roughly around 9,585,000 so the side of 24 size of a bitarray would meet this requirement of 1 million items 
 To sum up, it depends on how the designer makes trade off between the false positive rate and bit array size and hashes. 
