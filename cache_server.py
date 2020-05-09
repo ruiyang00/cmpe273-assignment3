@@ -23,6 +23,14 @@ class MyDict(dict):
         else:
             return serialize({"ErrorMessage": "No such file"})
 
+    def delete(self, key):
+        print("H this is key from delete operation:", key)
+        if key in self.keys():
+            del self[key]
+            return serialize({"Message": "Delete Successful"})
+        else:
+            return serialize({"Message": "No such file"})
+
     # def delete(self, key):
 
 
@@ -46,10 +54,16 @@ class UDPServer():
     def handle_operation(self, operation, key, value):
         if operation == 'GET':
             # TODO: PART I - implement GET retrieval from self.db.xxxxx
+
             return self.db.get(key.decode())
 
         elif operation == 'PUT':
             return self.db.put(key, value)
+
+        elif operation == 'DELETE':
+            print("hello from DELETE undert handle_operation()")
+            return self.db.delete(key.decode())
+
         else:
             print(f'Error: Invalid operation={operation}')
             return 'Not supported operation={}'.format(operation)

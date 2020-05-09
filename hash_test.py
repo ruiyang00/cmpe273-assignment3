@@ -1,17 +1,26 @@
 
-from DoubleLinkedlist import DoubleLinkedlist
+map = {"71fce5174c7ec7657710a1e5726af04e": 0,
+       "3b300b5203030208e43c99ab71b812e2": 1}
+list = [{'name': 'Dani Washiton', 'email': 'dwashiton@gmail.com', 'age': 25}, {
+    'name': 'Jay Nath', 'email': 'jnath@gmail.com', 'age': 29}]
 
 
-list = DoubleLinkedlist()
-data1 = {'name': 'Brad Pitt', 'email': 'bpitt@gmail.com', 'age': 30}
-data2 = {'name': 'Wall Bran', 'email': 'wbran@gmail.com', 'age': 18}
-data3 = {'name': 'Robert Jennifer', 'email': 'rjennifer@gmail.com', 'age': 24}
+def get(key, max_size):
+    if key in map:
+        value = list[map[key]]
+        list.append(map[key])
+        if(len(list) > max_size):
+            list.pop(max_size)
+        return key
+
+    else:
+        
+        list.append(map[key])
+
+        
+        return None
 
 
-list.addFront(data1)
-list.addFront(data2)
-list.addFront(data3)
-
-head = list.head.next.value
-print(head)
-print(list.get_size())
+key = "71fce5174c7ec7657710a1e5726af04e"
+print(list[map[key]])
+print(list)

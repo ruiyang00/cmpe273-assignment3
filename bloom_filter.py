@@ -33,7 +33,9 @@ class BloomFilter():
         return int(m)
 
     def is_member(self, item):
-        key = item.encode()
+        # print("is_member()'s key: ", item)
+        key = item
+        # key = item.encode()
         for i in range(self.hashes):
             newKey = hashlib.md5(key).hexdigest()
             key_in_int = int(newKey, 16)
@@ -44,11 +46,13 @@ class BloomFilter():
         return True
 
     def add(self, item):
+
+        # key = item
         key = item.encode()
-        print("key: ", key)
+        # print("key: ", key)
         for i in range(self.hashes):
             newKey = hashlib.md5(key).hexdigest()
-            print("newKey: ", newKey)
+            # print("newKey: ", newKey)
             key_in_int = int(newKey, 16)
             positive = key_in_int % self.bitarray_size
             self.bit_array[positive] = 1

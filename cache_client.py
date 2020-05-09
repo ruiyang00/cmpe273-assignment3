@@ -7,13 +7,11 @@ from bloom_filter import BloomFilter
 from node_ring import NodeRing
 from sample_data import USERS
 from server_config import NODES
-from pickle_hash import serialize_GET, serialize_PUT
+from pickle_hash import serialize_GET, serialize_PUT, serialize_DELETE
 from lru_cache import lru_cache
 
 
 BUFFER_SIZE = 1024
-UDP_IP = "127.0.0.1"
-UDP_PORT = 5005
 
 
 class UDPClient():
@@ -75,11 +73,17 @@ def process(udp_clients):
     print(
         f"Number of Users={len(USERS)}\nNumber of Users Cached={len(hash_codes)}")
 
-    # for hc in hash_codes:
-    #     data_bytes, key = serialize_GET(hc)
-    #     fix_me_server_id = 0
-    #     response = udp_clients[fix_me_server_id].send(data_bytes)
-    #     print(response)
+    for hc in hash_codes:
+        # print(hc)
+        data_bytes, key = serialize_GET(hc)
+        response = get(key, data_bytes, client_ring)
+        # print(response)
+
+    for hc in hash_codes:
+        data_bytes, key = serialize_DELETE(hc)
+        print("keys from DELETE OPERATAIONS:", data_bytes, key)
+        response = delete(key, data_bytes, client_ring)
+        print(response)
 
 
 if __name__ == "__main__":
