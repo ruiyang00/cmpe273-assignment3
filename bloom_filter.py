@@ -34,8 +34,15 @@ class BloomFilter():
 
     def is_member(self, item):
         # print("is_member()'s key: ", item)
-        key = item
-        # key = item.encode()
+
+        # this is for midterm execution env input as bytes
+        key = item  
+
+
+        # this is for test_bloom_filter.py env input as string
+        # key = item.encode()  
+
+        
         for i in range(self.hashes):
             newKey = hashlib.md5(key).hexdigest()
             key_in_int = int(newKey, 16)
